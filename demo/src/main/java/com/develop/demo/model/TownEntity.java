@@ -1,18 +1,31 @@
 package com.develop.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name="towns")
 public class TownEntity {
 
     @Id @GeneratedValue
     @Column(name ="town_id")
     private Long id;
+
+    @Column(name="user_id")
+    private Long userId;
+
     private String town_name;
     private String town_address;
     private String town_manager_name;
-    private String town_manager_id;
+
     private int people_num;
     private int communication_problems;
     private int announce_num;

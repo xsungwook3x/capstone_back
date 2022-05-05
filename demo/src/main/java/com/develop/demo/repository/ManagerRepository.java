@@ -1,6 +1,6 @@
 package com.develop.demo.repository;
 
-
+import com.develop.demo.model.ManagerEntity;
 import com.develop.demo.model.TownEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,13 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TownRepository extends JpaRepository<TownEntity,Long> {
+public interface ManagerRepository extends JpaRepository<ManagerEntity,Long> {
+    List<ManagerEntity> findByTownId(Long townId);
 
-    List<TownEntity> findAll();
-
-    List<TownEntity> findByUserId(Long userId);
-
-
-
-
+    Optional<ManagerEntity> findById(Long id);
 }

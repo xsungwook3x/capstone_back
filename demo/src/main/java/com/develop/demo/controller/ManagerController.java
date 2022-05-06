@@ -37,12 +37,17 @@ public class ManagerController {
 
             managerService.create(entity);
 
+            List<ManagerEntity> entities = managerService.retrieveByTown(entity.getTownId());
+
+            List<ManagerDTO> dtos = entities.stream().map(ManagerDTO::new).collect(Collectors.toList());
+
             HttpHeaders headers= new HttpHeaders();
             headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
             statusDTO message = new statusDTO();
             message.setStatus(StatusEnum.OK);
             message.setMessage("성공 코드");
+            message.setData(dtos);
 
             return new ResponseEntity<>(message,headers, HttpStatus.OK);
         }catch (Exception e){

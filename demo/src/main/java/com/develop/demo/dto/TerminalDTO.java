@@ -1,7 +1,7 @@
 package com.develop.demo.dto;
 
 import com.develop.demo.model.ManagerEntity;
-import com.develop.demo.model.TownEntity;
+import com.develop.demo.model.TerminalEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,33 +9,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ManagerDTO {
+public class TerminalDTO {
 
-    public Long id;
-    public Long townId;
-    public String name;
-    public String phone;
-    public String address;
-    public String email;
+    private Long id;
 
-    public ManagerDTO(final ManagerEntity entity){
+    private Long townId;
+
+    private String name;
+    private String phone;
+    private String address;
+
+    public TerminalDTO(final TerminalEntity entity){
         this.id=entity.getId();
         this.townId=entity.getTownId();
         this.name=entity.getName();
         this.phone=entity.getPhone();
         this.address= entity.getAddress();
-        this.email= entity.getEmail();
     }
 
-    public static ManagerEntity toEntity(final ManagerDTO dto){
-        return ManagerEntity.builder()
+    public static TerminalEntity toEntity(final TerminalDTO dto){
+        return TerminalEntity.builder()
                 .id(dto.getId())
                 .townId(dto.getTownId())
                 .address(dto.getAddress())
                 .name(dto.getName())
                 .phone(dto.getPhone())
-                .email(dto.getEmail())
                 .build();
     }
-
 }

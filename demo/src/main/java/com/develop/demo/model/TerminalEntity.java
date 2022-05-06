@@ -12,11 +12,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="managers")
-public class ManagerEntity {
+@Table(name="terminals")
+public class TerminalEntity {
 
     @Id @GeneratedValue
-    @Column(name="manager_id")
+    @Column(name="terminal_id")
     private Long id;
 
     @Column(name="town_id")
@@ -25,5 +25,4 @@ public class ManagerEntity {
     private String name;
     private String phone;
     private String address;
-    private String email;
 }

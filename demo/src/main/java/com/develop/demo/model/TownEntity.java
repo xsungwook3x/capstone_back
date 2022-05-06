@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name="towns")
 public class TownEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     @Column(name ="town_id")
     private Long id;
 

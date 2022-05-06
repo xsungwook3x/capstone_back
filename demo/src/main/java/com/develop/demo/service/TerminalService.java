@@ -36,13 +36,13 @@ public class TerminalService {
     public Optional<TerminalEntity> update(TerminalEntity entity){
         final Optional<TerminalEntity> original= repository.findById(entity.getId());
 
-        original.ifPresent(manager -> {
-            manager.setTownId(entity.getTownId());
-            manager.setName(entity.getName());
-            manager.setAddress(entity.getAddress());
-            manager.setPhone(entity.getPhone());
+        original.ifPresent(terminal -> {
+            terminal.setTownId(entity.getTownId());
+            terminal.setName(entity.getName());
+            terminal.setAddress(entity.getAddress());
+            terminal.setPhone(entity.getPhone());
 
-            repository.save(manager);
+            repository.save(terminal);
         });
 
         return retrieveById(entity.getId());

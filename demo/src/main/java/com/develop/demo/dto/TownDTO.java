@@ -1,9 +1,13 @@
 package com.develop.demo.dto;
 
+import com.develop.demo.model.EventEntity;
 import com.develop.demo.model.TownEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Collection;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,6 +39,7 @@ public class TownDTO {
         this.event_num= entity.getEvent_num();
         this.emergency_num=entity.getEmergency_num();
         this.urgent_announce_num= entity.getUrgent_announce_num();
+
     }
 
     public static TownEntity toEntity(final TownDTO dto){

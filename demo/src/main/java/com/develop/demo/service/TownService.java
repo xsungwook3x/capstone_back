@@ -1,11 +1,13 @@
 package com.develop.demo.service;
 
+import com.develop.demo.model.EventEntity;
 import com.develop.demo.model.TownEntity;
 import com.develop.demo.repository.TownRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,23 +16,23 @@ import java.util.Optional;
 public class TownService {
 
     @Autowired
-    private TownRepository repository;
+    private TownRepository townRepository;
 
     public List<TownEntity> retreiveAll(){
-        return repository.findAll();
+        return townRepository.findAll();
     }
 
     public List<TownEntity> retreiveTown(final Long userId){
-        return repository.findByUserId(userId);
+        return townRepository.findByUserId(userId);
     }
 
     public void create(final TownEntity entity){
-        repository.save(entity);
+        townRepository.save(entity);
     }
 
     public List<TownEntity> update(final TownEntity entity){
 
-        final Optional<TownEntity> original= repository.findById(entity.getId());
+        final Optional<TownEntity> original= townRepository.findById(entity.getId());
 
         original.ifPresent(town -> {
             town.setTown_address(entity.getTown_address());
@@ -42,18 +44,21 @@ public class TownService {
             town.setCommunication_problems(entity.getCommunication_problems());
             town.setEmergency_num(entity.getEmergency_num());
             town.setUrgent_announce_num(entity.getUrgent_announce_num());
-            town.setEvent_num(entity.getEvent_num());
 
 
-            repository.save(town);
+            townRepository.save(town);
         });
 
         return retreiveTown(entity.getUserId());
     }
 
+
+
+
+
     public void delete(final Long id){
         try{
-            repository.deleteById(id);
+            townRepository.deleteById(id);
         }catch (Exception e){
             log.error("error deleting town entity",id,e);
 

@@ -1,0 +1,45 @@
+package com.develop.demo.security;
+
+import com.develop.demo.model.UserEntity;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
+@Slf4j
+@Service
+public class TokenProvider {
+    private static final String SECRET_KEY="NMA8JPctFuna59f5";
+
+    public String create(UserEntity userEntity){
+
+        //만료일은 1일 뒤
+        Date expiryDate = Date.from(
+                Instant.now()
+                        .plus(1, ChronoUnit.DAYS)
+        );
+
+        return Jwts.builder()
+                .signWith(SignatureAlgorithm.HS512,SECRET_KEY) //헤더에 들어갈 내용 및 서명을 하기위한 시크릿 키
+                .setSubject(userEntity.getId().toString())
+                .setIssuer("smart system app")
+                .setIssuedAt(new Date())
+                .setExpiration(expiryDate)
+                .compact();
+    }
+
+    public String validateAndGetUserId(String token){
+
+        Claims claims = Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.getSubject();
+    }
+}

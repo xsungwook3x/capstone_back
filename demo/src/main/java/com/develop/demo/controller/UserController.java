@@ -1,7 +1,7 @@
 package com.develop.demo.controller;
 
 import com.develop.demo.StatusEnum;
-import com.develop.demo.Token.TokenProvider;
+import com.develop.demo.security.TokenProvider;
 import com.develop.demo.dto.UserDTO;
 import com.develop.demo.dto.statusDTO;
 import com.develop.demo.model.UserEntity;
@@ -74,10 +74,12 @@ public class UserController {
         UserEntity user = userService.getByCredetials(userDTO.getUserId(), userDTO.getPassword());
 
         if(user!=null){
+            final String token = tokenProvider.create(user);
             final UserDTO responseUserDTO=UserDTO.builder()
                     .userId(user.getUserId())
                     .id(user.getId())
                     .role(user.getRole())
+                    .token(token)
                     .build();
 
             HttpHeaders headers= new HttpHeaders();

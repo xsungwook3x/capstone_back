@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Data
 @Service
 @Getter
@@ -17,6 +19,6 @@ public class SmsRequestDTO {
     private String countryCode;
     private String from;
     private String content;
-    private List<MessagesRequestDto> messages;
+    private List<MessagesRequestDTO> messages;
 
 }

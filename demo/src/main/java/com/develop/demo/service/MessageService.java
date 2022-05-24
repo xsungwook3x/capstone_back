@@ -40,4 +40,8 @@ public class MessageService {
     public void remove(Long id){
         messageRepository.deleteById(id);
     }
+
+    public void sendEmergencyMessage(Long townId){
+        smsService.sendEmergencySMS(townId);
+    }
 }

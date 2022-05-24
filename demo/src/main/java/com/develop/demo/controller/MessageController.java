@@ -97,6 +97,22 @@ public class MessageController {
         message.setData(dtos);
 
         return new ResponseEntity<>(message,headers,HttpStatus.OK);
+
+
+    }
+
+    @GetMapping("/emergency/{town_id}")
+    public ResponseEntity<?> sendEmergencyMessage(@PathVariable Long town_id){
+        messageService.sendEmergencyMessage(town_id);
+
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        statusDTO message = new statusDTO();
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("성공 코드");
+
+        return new ResponseEntity<>(message,headers,HttpStatus.OK);
     }
 
 

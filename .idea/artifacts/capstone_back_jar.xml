@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="capstone_back:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/capstone_back_jar</output-path>
+    <root id="archive" name="capstone_back.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/demo/src/main/java/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/java-sdk v2.2/lib/javaSDK-2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/java-sdk v2.2/lib/json-simple-1.1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

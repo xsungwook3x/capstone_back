@@ -80,7 +80,7 @@ public class SmsService {
     }
     private ArrayList<JSONObject> makeMessage(String target,Long townId){
         ArrayList<JSONObject> toArr = new ArrayList<JSONObject>();
-        if(target=="m"){
+        if(target.equals("m")){
             List<ManagerEntity> managers=managerRepository.findByTownId(townId);
             for(ManagerEntity m:managers){
                 String phone=m.getPhone();
@@ -88,7 +88,7 @@ public class SmsService {
                 toOb.put("to",phone);
                 toArr.add(toOb);
             }
-        } else if (target=="p") {
+        } else if (target.equals("p")) {
             List<ProtectorEntity> protectors = protectorRepository.findByTownId(townId);
             for(ProtectorEntity m:protectors){
                 String phone=m.getPhone();

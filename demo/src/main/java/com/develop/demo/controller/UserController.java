@@ -78,6 +78,7 @@ public class UserController {
             final UserDTO responseUserDTO=UserDTO.builder()
                     .userId(user.getUserId())
                     .id(user.getId())
+                    .username(user.getUsername())
                     .role(user.getRole())
                     .token(token)
                     .build();

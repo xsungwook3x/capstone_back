@@ -132,6 +132,10 @@ public class EventController {
             entity.setFromEventDate(formatDateTime(entity.getFromEventDate()));
             entity.setToEventDate(formatDateTime(entity.getToEventDate()));
 
+            LocalDateTime currentDateTime=LocalDateTime.now();
+            currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            entity.setCreatedDatetime(currentDateTime);
+
             Optional<EventEntity> entities = eventService.update(entity);
             List<EventDTO> dtos = entities.stream().map(EventDTO::new).collect(Collectors.toList());
 

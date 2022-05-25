@@ -28,14 +28,11 @@ public class TownController {
     @PostMapping
     public ResponseEntity<?> createTown(@RequestBody TownDTO dto){
         try{
-            Long temporaryId = Long.valueOf(111111111);
 
             TownEntity entity = TownDTO.toEntity(dto);
 
             //자동생성이기때문에 초기화
             entity.setId(null);
-
-            entity.setUserId(temporaryId);
 
             service.create(entity);
 

@@ -101,9 +101,9 @@ public class MessageController {
 
     }
 
-    @GetMapping("/emergency/{town_id}")
-    public ResponseEntity<?> sendEmergencyMessage(@PathVariable Long town_id){
-        messageService.sendEmergencyMessage(town_id);
+    @GetMapping("/emergency/{terminal_id}")
+    public ResponseEntity<?> sendEmergencyMessage(@PathVariable Long terminal_id){
+        messageService.sendEmergencyMessage(terminal_id);
 
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));

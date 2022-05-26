@@ -41,7 +41,7 @@ public class MessageService {
         messageRepository.deleteById(id);
     }
 
-    public void sendEmergencyMessage(Long townId){
-        smsService.sendEmergencySMS(townId);
+    public void sendEmergencyMessage(Long terminalId){
+        smsService.sendEmergencySMS(terminalId);
     }
 }

@@ -178,7 +178,7 @@ public class SmsService {
         return 0;
     }
 
-    public int sendEmergencySMS(Long townId) {
+    public int sendEmergencySMS(Long terminalId) {
         String hostNameUrl = "https://sens.apigw.ntruss.com"; // 호스트 URL
         String requestUrl= "/sms/v2/services/"; // 요청 URL
         String requestUrlType = "/messages"; // 요청 URL
@@ -193,7 +193,7 @@ public class SmsService {
         JSONObject bodyJson = new JSONObject();
 
         JSONObject toJson2 = new JSONObject();
-        ArrayList<JSONObject> toArr = makeEmergencyMessage(townId);
+        ArrayList<JSONObject> toArr = makeEmergencyMessage(terminalId);
 
         bodyJson.put("type","SMS"); // Madantory, 메시지 Type (SMS | LMS | MMS), (소문자 가능) //
 

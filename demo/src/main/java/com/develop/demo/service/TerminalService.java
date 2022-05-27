@@ -25,6 +25,8 @@ public class TerminalService {
         return repository.findById(id);
     }
 
+
+
     public List<TerminalEntity> retrieveByTownId(Long townId){
         return repository.findByTownId(townId);
     }

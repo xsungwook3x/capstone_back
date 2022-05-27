@@ -115,5 +115,18 @@ public class MessageController {
         return new ResponseEntity<>(message,headers,HttpStatus.OK);
     }
 
+    @DeleteMapping("/{message_id}")
+    public ResponseEntity<?> removeMessageById(@PathVariable Long message_id){
+        messageService.remove(message_id);
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        statusDTO message = new statusDTO();
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("성공 코드");
+
+        return new ResponseEntity<>(message,headers,HttpStatus.OK);
+    }
+
 
 }

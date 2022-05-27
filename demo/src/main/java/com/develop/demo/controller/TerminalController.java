@@ -6,7 +6,9 @@ import com.develop.demo.dto.TerminalDTO;
 import com.develop.demo.dto.statusDTO;
 import com.develop.demo.model.ManagerEntity;
 import com.develop.demo.model.TerminalEntity;
+import com.develop.demo.model.TownEntity;
 import com.develop.demo.service.TerminalService;
+import com.develop.demo.service.TownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,9 @@ public class TerminalController {
     @Autowired
     private TerminalService terminalService;
 
+    @Autowired
+    private TownService townService;
+
     @PostMapping
     public ResponseEntity<?> createTerminal(@RequestBody TerminalDTO dto){
 
@@ -35,6 +40,13 @@ public class TerminalController {
             entity.setId(null);
 
             terminalService.create(entity);
+
+            Optional<TownEntity> townEntity=townService.retrieveTownById(entity.getTownId());
+            TownEntity updateOne=townEntity.get();
+
+            updateOne.setPeople_num(updateOne.getPeople_num()+1);
+
+            townService.update(updateOne);
 
             List<TerminalEntity> entities = terminalService.retrieveByTownId(entity.getTownId());
             List<TerminalDTO> dtos = entities.stream().map(TerminalDTO::new).collect(Collectors.toList());

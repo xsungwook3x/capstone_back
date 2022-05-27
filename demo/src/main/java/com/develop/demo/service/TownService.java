@@ -22,6 +22,8 @@ public class TownService {
         return townRepository.findAll();
     }
 
+    public Optional<TownEntity> retrieveTownById(Long id){return townRepository.findById(id);}
+
     public List<TownEntity> retreiveTown(final Long userId){
         return townRepository.findByUserId(userId);
     }
@@ -51,6 +53,7 @@ public class TownService {
 
         return retreiveTown(entity.getUserId());
     }
+
 
 
 

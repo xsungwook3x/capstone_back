@@ -17,5 +17,4 @@ public interface TownRepository extends JpaRepository<TownEntity,Long> {
 
 
 
-
 }

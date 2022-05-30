@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -25,9 +26,7 @@ public class AnnounceEntity {
     @Column(name="town_id")
     private Long townId;
 
-    private String title;
-
     private String content;
 
-    private LocalDateTime createdDatetime;
+    private LocalDate createdDate;
 }

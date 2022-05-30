@@ -16,9 +16,6 @@ public class AnnounceService {
     @Autowired
     private AnnounceRepository announceRepository;
 
-    public void create(AnnounceEntity entity){
-        announceRepository.save(entity);
-    }
 
     public List<AnnounceEntity> findAll(){return announceRepository.findAll();}
 

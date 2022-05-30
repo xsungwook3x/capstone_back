@@ -4,7 +4,9 @@ import com.develop.demo.StatusEnum;
 import com.develop.demo.dto.EventDTO;
 import com.develop.demo.dto.statusDTO;
 import com.develop.demo.model.EventEntity;
+import com.develop.demo.model.TownEntity;
 import com.develop.demo.service.EventService;
+import com.develop.demo.service.TownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,9 @@ public class EventController {
     @Autowired
     EventService eventService;
 
+    @Autowired
+    TownService townService;
+
     public LocalDate formatDateTime(LocalDate date){
         return LocalDate.parse(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
@@ -46,6 +51,14 @@ public class EventController {
             entity.setToEventDate(formatDateTime(entity.getToEventDate()));
 
             eventService.create(entity);
+
+            // 자동업
+            Optional<TownEntity> townEntity=townService.retrieveTownById(entity.getTownId());
+            TownEntity updateOne=townEntity.get();
+
+            updateOne.setEvent_num(updateOne.getEvent_num()+1);
+
+            townService.update(updateOne);
 
             List<EventEntity> entities = eventService.retrieveByTown(entity.getTownId());
 

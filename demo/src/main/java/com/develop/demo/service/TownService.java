@@ -2,7 +2,7 @@ package com.develop.demo.service;
 
 import com.develop.demo.model.EventEntity;
 import com.develop.demo.model.TownEntity;
-import com.develop.demo.repository.TownRepository;
+import com.develop.demo.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,8 @@ public class TownService {
 
     @Autowired
     private TownRepository townRepository;
+
+
 
     public List<TownEntity> retreiveAll(){
         return townRepository.findAll();

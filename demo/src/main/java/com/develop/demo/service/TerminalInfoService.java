@@ -16,7 +16,7 @@ public class TerminalInfoService {
     private TerminalInfoRepository terminalInfoRepository;
 
     public List<TerminalInfoEntity> retreiveByTerminalId(Long terminalId){
-        return terminalInfoRepository.findByTerminalId(terminalId);
+        return terminalInfoRepository.findTop50ByTerminalIdOrderByIdDesc(terminalId);
     }
 
 }

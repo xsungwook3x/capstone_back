@@ -34,6 +34,8 @@ public class TerminalInfoDTO {
 
     private int flame_sensor;
 
+    private int sound_sensor;
+
     public TerminalInfoDTO(final TerminalInfoEntity entity){
         this.id=entity.getId();
         this.terminalId=entity.getTerminalId();
@@ -44,6 +46,7 @@ public class TerminalInfoDTO {
         this.motion_sensor=entity.getMotion_sensor();
         this.illuminance_sensor=entity.getIlluminance_sensor();
         this.flame_sensor=entity.getFlame_sensor();
+        this.sound_sensor=entity.getSound_sensor();
     }
 
     public static TerminalInfoEntity toEntity(final TerminalInfoDTO dto){
@@ -57,6 +60,7 @@ public class TerminalInfoDTO {
                 .motion_sensor(dto.getMotion_sensor())
                 .illuminance_sensor(dto.getIlluminance_sensor())
                 .flame_sensor(dto.getFlame_sensor())
+                .sound_sensor(dto.getSound_sensor())
                 .build();
     }
 }
